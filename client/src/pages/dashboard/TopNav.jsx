@@ -56,7 +56,7 @@ const TopNav = () => {
           <div className="flex items-center gap-1">
             <Kbd keys={["ctrl"]}>K</Kbd>{" "}
             <span className="text-xs font-bold">or</span>{" "}
-            <Kbd keys={["alt", "enter"]}>K</Kbd>
+            <Kbd keys={["alt", "enter"]}>Enter</Kbd>
           </div>
         }
         className="max-w-[700px]"

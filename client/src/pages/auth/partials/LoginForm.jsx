@@ -41,7 +41,7 @@ function LoginForm() {
               <Typewriter
                 cursor
                 cursorBlinking
-                delaySpeed={1000}
+                delaySpeed={2000}
                 deleteSpeed={25}
                 loop={0}
                 typeSpeed={75}

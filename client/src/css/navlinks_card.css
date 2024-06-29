@@ -1,0 +1,14 @@
+.link-wrapper .icon-container {
+  transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  -ms-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+}
+.link-wrapper:hover .icon-container {
+  background-color: hsl(var(--nextui-primary));
+}
+
+.link-wrapper .icon-container.active {
+  color: hsl(var(--nextui-warning));
+}
