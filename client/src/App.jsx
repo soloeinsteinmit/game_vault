@@ -13,6 +13,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import Login from "./pages/auth/Login";
 import SignIn from "./pages/auth/SignIn";
 import GameVaultSite from "./pages/game_vault_site/GameVaultSite";
+import DashboardContent from "./pages/dashboard/DashboardContent";
 
 function App() {
   const router = createBrowserRouter(
@@ -21,7 +22,9 @@ function App() {
         <Route index element={<Login />} />
         <Route path="gamevault.sign-in" element={<SignIn />} />
         <Route path="game-vault" element={<GameVaultSite />} />
-        <Route path="dashboard" element={<DashboardLayout />}></Route>
+        <Route path="dashboard" element={<DashboardLayout />}>
+          <Route index element={<DashboardContent />} />
+        </Route>
       </Route>
     )
   );
