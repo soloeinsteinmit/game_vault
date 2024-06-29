@@ -3,6 +3,7 @@
     THIS IS A SAMPLE CODE FROM CHATGPT
     YET TO WRITE MINE
 */
+
 import { createUser, findUserByUsername } from "../models/userModel.js";
 import { generateToken } from "../utils/jwtUtils.js";
 import bcrypt from "bcryptjs";
