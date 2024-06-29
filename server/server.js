@@ -1,3 +1,7 @@
+/* 
+    THIS IS A SAMPLE CODE FROM CHATGPT
+    YET TO WRITE MINE
+*/
 import express from "express";
 import dotenv from "dotenv";
 
