@@ -13,5 +13,8 @@ body {
   position: relative;
   @apply bg-content2;
 
+  padding: 0;
+  margin: 0;
+
   height: 100dvh;
 }

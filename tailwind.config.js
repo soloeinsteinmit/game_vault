@@ -9,7 +9,12 @@ module.exports = {
     "./client/src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "pt-sans": ['"PT Sans Narrow"', "sans-serif"],
+        "playwrite-fr": ['"Playwrite FR Trad"', "cursive"],
+      },
+    },
   },
   darkMode: "class",
   plugins: [nextui()],
