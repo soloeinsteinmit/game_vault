@@ -6,7 +6,7 @@ function DashboardLayout() {
   return (
     <div className="min-h-screen">
       <TopNav />
-      <div className="flex items-start">
+      <div className="flex items-start mt-3">
         <LeftNav />
         <Outlet />
       </div>

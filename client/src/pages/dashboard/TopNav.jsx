@@ -37,7 +37,7 @@ const TopNav = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-between gap-5 px-5 h-20  top-0 z-50">
+    <div className="flex items-center justify-between gap-5 px-5 h-20 sticky bg-content1 top-0 z-50 shadow-medium">
       <div className="flex gap-2 items-center">
         <p className="font-playwrite-fr text-xs font-extrabold italic">
           GameVault{" "}
