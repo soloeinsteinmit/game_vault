@@ -8,7 +8,9 @@ function DashboardLayout() {
       <TopNav />
       <div className="flex items-start mt-3">
         <LeftNav />
-        <Outlet />
+        <div className=" max-w-[1000px] w-[900px] mx-auto">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../css/navlinks_card.css";
 
-function NavLinkCard({ icon, linkName = "Name here...", to = "/dashboard" }) {
+function NavLinkCard({ icon, linkName = "Name here...", to = "/" }) {
   return (
     <NavLink
       to={to}

@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=PT+Sans+Narrow:wght@400;700&family=Playwrite+FR+Trad:wght@100..400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&family=Playwrite+FR+Trad:wght@100..400&family=Space+Grotesk:wght@300..700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: "Manrope", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   /* font-family: "PT Sans Narrow", sans-serif; */
 
   /* font-family: "Playwrite FR Trad", cursive; */

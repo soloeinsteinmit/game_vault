@@ -7,15 +7,33 @@ import {
   FaForwardFast,
   FaCrown,
   FaCalendarDays,
+  FaRankingStar,
+  FaGhost,
 } from "react-icons/fa6";
+
 import { HiMiniTrophy } from "react-icons/hi2";
 import { BsFillBarChartLineFill } from "react-icons/bs";
 import { IoGameController } from "react-icons/io5";
 
+import { User } from "@nextui-org/user";
+
 const LeftNav = () => {
   return (
-    <div className="flex flex-col gap-3 sticky top-20 w-[300px] max-w-[350px] px-5 pb-10">
-      <Attribution />
+    <div className="flex flex-col gap-3 sticky top-24 w-[250px] max-w-[300px] px-5 text-xs">
+      <User
+        name="Jane Doe"
+        classNames={{
+          name: "text-xs",
+          description: "text-[0.65rem]",
+        }}
+        className="items-center justify-start"
+        description="Product Designer"
+        avatarProps={{
+          size: "sm",
+          src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
+        }}
+      />
+
       <div className="flex flex-col gap-2">
         <p className="text-lg font-extrabold ">New Releases</p>
         <div className="flex flex-col gap-2">
@@ -36,13 +54,19 @@ const LeftNav = () => {
           <NavLinkCard icon={<FaCrown />} linkName="All top 250" />
         </div>
       </div>
-      <p className="text-lg font-extrabold ">All Games</p>
+      {/* <p className="text-lg font-extrabold ">All Games</p> */}
       <div className="flex flex-col gap-2">
         <p className="text-lg font-extrabold ">Browse</p>
         <div className="flex flex-col gap-2">
-          <NavLinkCard icon={<IoGameController />} linkName="Platforms" />
+          <NavLinkCard
+            to="platforms"
+            icon={<IoGameController />}
+            linkName="Platforms"
+          />
+          <NavLinkCard to="genres" icon={<FaGhost />} linkName="Genres" />
         </div>
       </div>
+      <Attribution />
     </div>
   );
 };

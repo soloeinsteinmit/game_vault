@@ -9,6 +9,6 @@
   background-color: hsl(var(--nextui-primary));
 }
 
-.link-wrapper .icon-container.active {
-  color: hsl(var(--nextui-warning));
+.link-wrapper.active .icon-container {
+  background-color: hsl(var(--nextui-primary));
 }
