@@ -7,6 +7,7 @@ import { Button } from "@nextui-org/button";
 import { Divider } from "@nextui-org/divider";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
+import { RiInformation2Fill } from "react-icons/ri";
 
 function LoginForm() {
   const words = [
@@ -24,12 +25,21 @@ function LoginForm() {
   ];
   return (
     <div className="flex flex-col justify-between gap-5 p-5 max-w-[500px] w-full h-dvh bg-content1">
-      <p className="text-sm font-pt-sans text-right">
-        <span className="text-default-500">HAVE AND ACCOUNT?</span>{" "}
-        <Link to={"gamevault.sign-in"} className="font-bold">
-          SIGN UP
-        </Link>
-      </p>
+      <div className="font-pt-sans flex justify-between ">
+        <div className="flex gap-1 items-center text-primary hover:text-primary-200 transition-all duration-300">
+          <Link to="gamevault.io">Learn more</Link>{" "}
+          <RiInformation2Fill className="text-base mt-1" />
+        </div>
+        <p className="text-sm font-pt-sans text-right">
+          <span className="text-default-500">HAVE AND ACCOUNT?</span>{" "}
+          <Link
+            to={"gamevault.sign-in"}
+            className="font-bold text-primary hover:text-primary-200 transition-all duration-300"
+          >
+            SIGN UP
+          </Link>
+        </p>
+      </div>
 
       {/* ---------------------------------------------------------------------- */}
 

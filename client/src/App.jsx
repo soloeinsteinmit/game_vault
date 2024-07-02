@@ -23,7 +23,7 @@ function App() {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Login />} />
         <Route path="gamevault.sign-in" element={<SignIn />} />
-        <Route path="game-vault" element={<GameVaultSite />} />
+        <Route path="gamevault.io" element={<GameVaultSite />} />
         <Route path="dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardContent />} />
           <Route path="genres" element={<Genres />} />

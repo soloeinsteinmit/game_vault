@@ -11,7 +11,7 @@ body {
   /* font-family: "Playwrite FR Trad", cursive; */
   /* font-optical-sizing: auto; */
   position: relative;
-  @apply bg-content1;
+  /* @apply bg-content1; */
 
   padding: 0;
   margin: 0;

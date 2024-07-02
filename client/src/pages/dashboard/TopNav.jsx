@@ -8,6 +8,8 @@ import { ThemeSwitch } from "../../components/ThemeSwitcher";
 import { Chip } from "@nextui-org/chip";
 import { Button } from "@nextui-org/button";
 import { FaGear } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+import { RiInformation2Fill } from "react-icons/ri";
 
 const TopNav = () => {
   const inputRef = useRef(null);
@@ -63,6 +65,11 @@ const TopNav = () => {
       />
       <div className="flex gap-4">
         <ThemeSwitch />
+        <Link to="/gamevault.io">
+          <Button isIconOnly variant="light">
+            <RiInformation2Fill className="text-lg" />
+          </Button>
+        </Link>
         <Button isIconOnly variant="light">
           <FaGear />
         </Button>

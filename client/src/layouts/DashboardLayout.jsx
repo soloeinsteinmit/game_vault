@@ -4,7 +4,7 @@ import TopNav from "../pages/dashboard/TopNav";
 
 function DashboardLayout() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-scree bg-content1">
       <TopNav />
       <div className="flex items-start mt-3">
         <LeftNav />
