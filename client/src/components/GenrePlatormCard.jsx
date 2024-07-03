@@ -10,8 +10,7 @@ const GenrePlatormCard = ({
   img,
   name = "Acme camera",
   games_count = 0,
-  gameName = "Game Name",
-  added = 0,
+
   children,
 }) => {
   return (
@@ -44,7 +43,7 @@ const GenrePlatormCard = ({
           radius="full"
           size="sm"
         >
-          View game in genre 🎮
+          View more games🎮🕹️
         </Button>
       </CardFooter>
     </Card>
@@ -53,11 +52,10 @@ const GenrePlatormCard = ({
 
 export default GenrePlatormCard;
 
-function HighestAddedGames({ gameName = "Acme camera", games_count = 0 }) {
-  return (
-    <div className="w-full flex justify-between items-center">
-      <span className="text-xs">{gameName}</span>
-      <span className="text-xs">{formatNumberWithCommas(games_count)}</span>
-    </div>
-  );
+export function truncateGameName(gameName) {
+  const words = gameName.split(" ");
+  if (words.length > 6) {
+    return words.slice(0, 6).join(" ") + "...";
+  }
+  return gameName;
 }

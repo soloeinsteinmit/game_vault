@@ -1,16 +1,18 @@
 import { Chip } from "@nextui-org/chip";
 import React, { useEffect, useRef, useState } from "react";
-import { formatNumberWithCommas } from "../../../components/GameCard";
-import GenrePlatormCard from "../../../components/GenrePlatormCard";
+
+import GenrePlatormCard, {
+  truncateGameName,
+} from "../../../components/GenrePlatormCard";
 import CardSkeleton from "../../../components/CardsSkeleton";
 import ErrorComponent from "../../../components/ErrorComponent";
 import {
   fetchDevlopersList,
   fetchNextPageData,
 } from "../../../../../server/api/rawg_api_data";
-import { Button } from "@nextui-org/button";
-import axios from "axios";
+
 import { Spinner } from "@nextui-org/spinner";
+import { formatNumberWithCommas } from "../../../components/GameCard";
 
 const DevelopersList = () => {
   const [developersResult, setDevelopersResult] = useState([]);
@@ -38,22 +40,6 @@ const DevelopersList = () => {
 
     fetchDevelopers();
   }, []);
-
-  /*   const loadMoreGames = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(nextUrl);
-      setData(response.data);
-      setDevelopersResult((prevGames) => [
-        ...prevGames,
-        ...response.data.results,
-      ]);
-      setNextUrl(response.data.next);
-    } catch (error) {
-      setError(error);
-    }
-    setLoading(false);
-  }; */
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -119,8 +105,10 @@ const DevelopersList = () => {
                     variant="faded"
                     className="flex gap-1"
                   >
-                    <span className="truncate w-[100px]">{game.name}</span> -
-                    {game.added}
+                    <span className="truncate w-[100px]">
+                      {truncateGameName(game.name)}
+                    </span>{" "}
+                    - {formatNumberWithCommas(game.added)}
                   </Chip>
                 ))}
               </div>

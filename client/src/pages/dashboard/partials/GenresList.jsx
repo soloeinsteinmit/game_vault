@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import GenrePlatormCard from "../../../components/GenrePlatormCard";
+import GenrePlatormCard, {
+  truncateGameName,
+} from "../../../components/GenrePlatormCard";
 import {
   fetchGenresList,
   fetchNextPageData,
@@ -97,7 +99,8 @@ const GenresList = () => {
               <div className="flex w-full flex-wrap gap-2">
                 {genre.games.map((game) => (
                   <Chip size="sm" color="warning" key={game.id} variant="faded">
-                    {game.name} - {formatNumberWithCommas(game.added)}
+                    {truncateGameName(game.name)} -{" "}
+                    {formatNumberWithCommas(game.added)}
                   </Chip>
                 ))}
               </div>

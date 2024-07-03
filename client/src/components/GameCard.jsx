@@ -12,6 +12,7 @@ import { Divider } from "@nextui-org/divider";
 import { Button } from "@nextui-org/button";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { truncateGameName } from "./GenrePlatormCard";
 
 const GameCard = ({
   gameImage = img,
@@ -85,7 +86,7 @@ const GameCard = ({
           to={to}
           className="text-xl font-bold hover:text-default-500 transition-all duration-300"
         >
-          {gameName} {getStatus(status)}
+          {truncateGameName(gameName)} {getStatus(status)}
         </Link>
         <Chip variant="flat" radius="sm" size="sm" startContent={<FaPlus />}>
           {formatNumberWithCommas(added)}

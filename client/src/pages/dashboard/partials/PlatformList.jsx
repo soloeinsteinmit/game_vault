@@ -5,7 +5,9 @@ import {
 } from "../../../../../server/api/rawg_api_data";
 import ErrorComponent from "../../../components/ErrorComponent";
 import CardSkeleton from "../../../components/CardsSkeleton";
-import GenrePlatormCard from "../../../components/GenrePlatormCard";
+import GenrePlatormCard, {
+  truncateGameName,
+} from "../../../components/GenrePlatormCard";
 import { Chip } from "@nextui-org/chip";
 import { formatNumberWithCommas } from "../../../components/GameCard";
 import { Spinner } from "@nextui-org/spinner";
@@ -96,7 +98,8 @@ const PlatformList = () => {
               <div className="flex w-full flex-wrap gap-2">
                 {platform.games.map((game) => (
                   <Chip size="sm" key={game.id} color="warning" variant="faded">
-                    {game.name} - {formatNumberWithCommas(game.added)}
+                    {truncateGameName(game.name)} -{" "}
+                    {formatNumberWithCommas(game.added)}
                   </Chip>
                 ))}
               </div>
