@@ -1,17 +1,19 @@
-import React, { useEffect, useState, useRef } from "react";
-import {
-  fetchNextPageData,
-  fetchPlatformsList,
-} from "../../../../../server/api/rawg_api_data";
-import ErrorComponent from "../../../components/ErrorComponent";
-import CardSkeleton from "../../../components/CardsSkeleton";
-import GenrePlatormCard from "../../../components/GenrePlatormCard";
 import { Chip } from "@nextui-org/chip";
+import React, { useEffect, useRef, useState } from "react";
 import { formatNumberWithCommas } from "../../../components/GameCard";
+import GenrePlatormCard from "../../../components/GenrePlatormCard";
+import CardSkeleton from "../../../components/CardsSkeleton";
+import ErrorComponent from "../../../components/ErrorComponent";
+import {
+  fetchDevlopersList,
+  fetchNextPageData,
+} from "../../../../../server/api/rawg_api_data";
+import { Button } from "@nextui-org/button";
+import axios from "axios";
 import { Spinner } from "@nextui-org/spinner";
 
-const PlatformList = () => {
-  const [platformResult, setPlatformResult] = useState([]);
+const DevelopersList = () => {
+  const [developersResult, setDevelopersResult] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [nextUrl, setNextUrl] = useState("");
@@ -21,13 +23,12 @@ const PlatformList = () => {
   const loader = useRef(null); // Ref for the loader div
 
   useEffect(() => {
-    const fetchGames = async () => {
+    const fetchDevelopers = async () => {
       try {
-        const data = await fetchPlatformsList();
-
+        const data = await fetchDevlopersList();
         setData(data);
-        setPlatformResult(data.results);
-
+        setDevelopersResult(data.results);
+        setNextUrl(data.next);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -35,16 +36,32 @@ const PlatformList = () => {
       }
     };
 
-    fetchGames();
+    fetchDevelopers();
   }, []);
+
+  /*   const loadMoreGames = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(nextUrl);
+      setData(response.data);
+      setDevelopersResult((prevGames) => [
+        ...prevGames,
+        ...response.data.results,
+      ]);
+      setNextUrl(response.data.next);
+    } catch (error) {
+      setError(error);
+    }
+    setLoading(false);
+  }; */
 
   useEffect(() => {
     const fetchGames = async () => {
       setLoading(true);
       try {
-        const response = await fetchNextPageData("platforms", page);
+        const response = await fetchNextPageData("developers", page);
         setData(response.data);
-        setPlatformResult((prevGames) => [...prevGames, ...response.results]);
+        setDevelopersResult((prevGames) => [...prevGames, ...response.results]);
         setNextUrl(response.next);
         setLoading(false);
       } catch (error) {
@@ -78,7 +95,7 @@ const PlatformList = () => {
 
   return (
     <>
-      {loading && platformResult.length === 0 ? (
+      {loading && developersResult.length === 0 ? (
         <div className="w-full columns-3 space-y-5">
           {[...Array(6)].map((_, index) => (
             <CardSkeleton key={index} />
@@ -86,17 +103,24 @@ const PlatformList = () => {
         </div>
       ) : (
         <div className="w-full columns-3 space-y-5 my-5 mb-10">
-          {platformResult.map((platform, index) => (
+          {developersResult.map((developers, index) => (
             <GenrePlatormCard
-              key={`${platform.id}-${index}`}
-              img={platform.image_background}
-              name={platform.name}
-              games_count={platform.games_count}
+              key={`${developers.id}-${index}`}
+              img={developers.image_background}
+              name={developers.name}
+              games_count={developers.games_count}
             >
               <div className="flex w-full flex-wrap gap-2">
-                {platform.games.map((game) => (
-                  <Chip size="sm" key={game.id} color="warning" variant="faded">
-                    {game.name} - {formatNumberWithCommas(game.added)}
+                {(developers?.games ?? []).map((game) => (
+                  <Chip
+                    key={game.id}
+                    size="small"
+                    color="warning"
+                    variant="faded"
+                    className="flex gap-1"
+                  >
+                    <span className="truncate w-[100px]">{game.name}</span> -
+                    {game.added}
                   </Chip>
                 ))}
               </div>
@@ -118,4 +142,4 @@ const PlatformList = () => {
   );
 };
 
-export default PlatformList;
+export default DevelopersList;

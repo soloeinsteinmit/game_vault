@@ -9,7 +9,11 @@ import {
   FaCalendarDays,
   FaRankingStar,
   FaGhost,
+  FaCode,
+  FaUsersLine,
+  FaTags,
 } from "react-icons/fa6";
+import { LiaTelegramPlane } from "react-icons/lia";
 
 import { HiMiniTrophy } from "react-icons/hi2";
 import { BsFillBarChartLineFill } from "react-icons/bs";
@@ -19,7 +23,7 @@ import { User } from "@nextui-org/user";
 
 const LeftNav = () => {
   return (
-    <div className="flex flex-col gap-3 sticky top-24 w-[250px] max-w-[300px] px-5 text-xs">
+    <div className="flex flex-col gap-3 sticky top-24 w-[220px] max-w-[300px] px-5 text-xs overflow-auto h-[82vh]">
       <User
         name="Jane Doe"
         classNames={{
@@ -33,6 +37,34 @@ const LeftNav = () => {
           src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
         }}
       />
+
+      <div className="flex flex-col gap-2">
+        <p className="text-lg font-extrabold ">Browse</p>
+        <div className="flex flex-col gap-2">
+          <NavLinkCard
+            to="platforms"
+            icon={<IoGameController />}
+            linkName="Platforms"
+          />
+          <NavLinkCard to="genres" icon={<FaGhost />} linkName="Genres" />
+          <NavLinkCard
+            to="developers"
+            icon={<FaCode />}
+            linkName="Developers"
+          />
+          <NavLinkCard
+            to="publishers"
+            icon={<LiaTelegramPlane />}
+            linkName="Publishers"
+          />
+          {/* <NavLinkCard
+            to="creators"
+            icon={<FaUsersLine />}
+            linkName="Creators"
+          /> */}
+          <NavLinkCard to="tags" icon={<FaTags />} linkName="Tags" />
+        </div>
+      </div>
 
       <div className="flex flex-col gap-2">
         <p className="text-lg font-extrabold ">New Releases</p>
@@ -55,17 +87,7 @@ const LeftNav = () => {
         </div>
       </div>
       {/* <p className="text-lg font-extrabold ">All Games</p> */}
-      <div className="flex flex-col gap-2">
-        <p className="text-lg font-extrabold ">Browse</p>
-        <div className="flex flex-col gap-2">
-          <NavLinkCard
-            to="platforms"
-            icon={<IoGameController />}
-            linkName="Platforms"
-          />
-          <NavLinkCard to="genres" icon={<FaGhost />} linkName="Genres" />
-        </div>
-      </div>
+
       <Attribution />
     </div>
   );

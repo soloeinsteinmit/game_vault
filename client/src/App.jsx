@@ -20,6 +20,10 @@ import GenreLayout from "./layouts/GenreLayout";
 import GenresList from "./pages/dashboard/partials/GenresList";
 import PlatformList from "./pages/dashboard/partials/PlatformList";
 import PlatformLayout from "./layouts/PlatformLayout";
+import DevelopersList from "./pages/dashboard/partials/DevelopersList";
+import PublishersList from "./pages/dashboard/partials/PublishersList";
+import TagsList from "./pages/dashboard/partials/TagsList";
+import CreatorsList from "./pages/dashboard/partials/CreatorsList";
 
 function App() {
   const router = createBrowserRouter(
@@ -30,6 +34,12 @@ function App() {
         <Route path="gamevault.io" element={<GameVaultSite />} />
         <Route path="dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardContent />} />
+
+          <Route path="developers" element={<DevelopersList />} />
+          <Route path="publishers" element={<PublishersList />} />
+          <Route path="tags" element={<TagsList />} />
+          <Route path="creators" element={<CreatorsList />} />
+
           <Route path="genres" element={<GenreLayout />}>
             <Route index element={<GenresList />} />
             <Route path=":genreId" element={<Genres />} />

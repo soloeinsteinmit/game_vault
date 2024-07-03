@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   fetchNextPageData,
-  fetchPlatformsList,
+  fetchPublishersList,
 } from "../../../../../server/api/rawg_api_data";
 import ErrorComponent from "../../../components/ErrorComponent";
 import CardSkeleton from "../../../components/CardsSkeleton";
@@ -10,8 +10,8 @@ import { Chip } from "@nextui-org/chip";
 import { formatNumberWithCommas } from "../../../components/GameCard";
 import { Spinner } from "@nextui-org/spinner";
 
-const PlatformList = () => {
-  const [platformResult, setPlatformResult] = useState([]);
+const PublishersList = () => {
+  const [publisherResult, setPublisherResult] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [nextUrl, setNextUrl] = useState("");
@@ -23,11 +23,10 @@ const PlatformList = () => {
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        const data = await fetchPlatformsList();
-
+        const data = await fetchPublishersList();
         setData(data);
-        setPlatformResult(data.results);
-
+        setPublisherResult(data.results);
+        setNextUrl(data.next);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -42,9 +41,9 @@ const PlatformList = () => {
     const fetchGames = async () => {
       setLoading(true);
       try {
-        const response = await fetchNextPageData("platforms", page);
+        const response = await fetchNextPageData("publishers", page);
         setData(response.data);
-        setPlatformResult((prevGames) => [...prevGames, ...response.results]);
+        setPublisherResult((prevGames) => [...prevGames, ...response.results]);
         setNextUrl(response.next);
         setLoading(false);
       } catch (error) {
@@ -75,10 +74,9 @@ const PlatformList = () => {
   }, []);
 
   if (error) return <ErrorComponent errorMessage={error.message} />;
-
   return (
     <>
-      {loading && platformResult.length === 0 ? (
+      {loading && publisherResult.length === 0 ? (
         <div className="w-full columns-3 space-y-5">
           {[...Array(6)].map((_, index) => (
             <CardSkeleton key={index} />
@@ -86,15 +84,15 @@ const PlatformList = () => {
         </div>
       ) : (
         <div className="w-full columns-3 space-y-5 my-5 mb-10">
-          {platformResult.map((platform, index) => (
+          {publisherResult.map((publisher, index) => (
             <GenrePlatormCard
-              key={`${platform.id}-${index}`}
-              img={platform.image_background}
-              name={platform.name}
-              games_count={platform.games_count}
+              key={`${publisher.id}-${index}`}
+              img={publisher.image_background}
+              name={publisher.name}
+              games_count={publisher.games_count}
             >
               <div className="flex w-full flex-wrap gap-2">
-                {platform.games.map((game) => (
+                {publisher.games.map((game) => (
                   <Chip size="sm" key={game.id} color="warning" variant="faded">
                     {game.name} - {formatNumberWithCommas(game.added)}
                   </Chip>
@@ -118,4 +116,4 @@ const PlatformList = () => {
   );
 };
 
-export default PlatformList;
+export default PublishersList;

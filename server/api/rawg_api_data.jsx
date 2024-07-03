@@ -25,5 +25,51 @@ const fetchPlatformsList = async () => {
   console.log("platform data up");
   return response.data;
 };
+const fetchDevlopersList = async () => {
+  const response = await axios.get(`${baseURL}developers?key=${rawgApiKey}`);
+  console.log(response.data);
+  console.log("developer data up");
+  return response.data;
+};
 
-export { fetchGamesList, fetchGenresList, fetchPlatformsList };
+const fetchTagsList = async () => {
+  const response = await axios.get(`${baseURL}tags?key=${rawgApiKey}`);
+  console.log(response.data);
+  console.log("tags data up");
+  return response.data;
+};
+
+const fetchPublishersList = async () => {
+  const response = await axios.get(`${baseURL}publishers?key=${rawgApiKey}`);
+  console.log(response.data);
+  console.log("publishers data up");
+  return response.data;
+};
+
+/* const fetchCreatorsList = async () => {
+  const response = await axios.get(`${baseURL}creators?key=${rawgApiKey}`);
+  console.log(response.data);
+  console.log("creators data up");
+  return response.data;
+}; */
+
+const fetchNextPageData = async (pageName, page) => {
+  const response = await axios.get(
+    `${baseURL}${pageName}?key=${rawgApiKey}&page=${page}`
+  );
+
+  console.log(response.data);
+  console.log("next page data up");
+  return response.data;
+};
+
+export {
+  fetchGamesList,
+  fetchGenresList,
+  fetchPlatformsList,
+  fetchDevlopersList,
+  fetchTagsList,
+  fetchPublishersList,
+  // fetchCreatorsList,
+  fetchNextPageData,
+};
