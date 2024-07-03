@@ -23,7 +23,7 @@ import { User } from "@nextui-org/user";
 
 const LeftNav = () => {
   return (
-    <div className="flex flex-col gap-3 sticky top-24 w-[220px] max-w-[300px] px-5 text-xs overflow-auto h-[82vh]">
+    <div className="flex flex-col gap-3 sticky top-24 w-[220px] max-w-[300px] px-5 text-xs overflow-auto h-[82vh] xl-tab:hidden">
       <User
         name="Jane Doe"
         classNames={{
@@ -41,6 +41,11 @@ const LeftNav = () => {
       <div className="flex flex-col gap-2">
         <p className="text-lg font-extrabold ">Browse</p>
         <div className="flex flex-col gap-2">
+          <NavLinkCard
+            to="/dashboard"
+            icon={<FaRankingStar />}
+            linkName="Top picks"
+          />
           <NavLinkCard
             to="platforms"
             icon={<IoGameController />}
@@ -95,7 +100,7 @@ const LeftNav = () => {
 
 export default LeftNav;
 
-function Attribution() {
+export function Attribution() {
   return (
     <p className="text-xs text-left text-default-500 mb-0">
       Made with <span>❤️‍🔥</span> by <u>Solomon Eshun</u> with{" "}

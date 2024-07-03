@@ -5,9 +5,12 @@ import React from "react";
 
 export default function GameSkeleton() {
   return (
-    <Card className="w-[320px] space-y-5 p-4 break-inside-avoid" radius="lg">
+    <Card
+      className="w-[320px] lg-tab:w-[500px] xxs-tab:w-full space-y-5 p-4 break-inside-avoid"
+      radius="lg"
+    >
       <Skeleton className="rounded-lg">
-        <div className="h-24 rounded-lg bg-default-300"></div>
+        <div className="h-32 rounded-lg bg-default-300"></div>
       </Skeleton>
       <div className="space-y-3">
         <Skeleton className="w-full rounded-lg">

@@ -10,17 +10,22 @@ import React from "react";
 
 export default function UserDropdown() {
   return (
-    <Dropdown placement="bottom-start">
+    <Dropdown placement="bottom-start" size="sm">
       <DropdownTrigger>
         <User
           as="button"
           avatarProps={{
+            size: "sm",
             isBordered: true,
             src: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
           }}
-          className="transition-transform"
+          className="transition-transform text-tiny"
           description="@tonyreichert"
           name="Tony Reichert"
+          classNames={{
+            name: "xl-tab:text-tiny ",
+            description: "",
+          }}
         />
       </DropdownTrigger>
       <DropdownMenu aria-label="User Actions" variant="flat">

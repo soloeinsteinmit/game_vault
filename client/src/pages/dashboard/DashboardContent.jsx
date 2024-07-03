@@ -77,12 +77,12 @@ const DashboardContent = () => {
   if (error) return <ErrorComponent errorMessage={error.message} />;
 
   return (
-    <div className="w-full flex flex-col gap-5 pb-20">
-      <p className="flex flex-col text-4xl font-extrabold">
+    <div className="w-full flex flex-col gap-5 pb-20 lg-tab:px-10 sm-scard-tab:px-8 mobile:px-5">
+      <p className="flex flex-col text-4xl font-extrabold sm-scard-tab:text-center">
         Top Picks{" "}
         <span className="text-base font-normal">Based on ratings</span>
       </p>
-      <div className="flex w-full flex-wrap md:flex-nowrap gap-4 mt-4">
+      <div className="flex w-full flex-wrap md:flex-nowrap gap-4 mt-4 mobile:mt-0 sm-scard-tab:justify-center">
         <Select label="Order by:" className="max-w-xs" size="sm" radius="md">
           {order_by.map((order) => (
             <SelectItem key={order.key}>{order.label}</SelectItem>
@@ -95,13 +95,13 @@ const DashboardContent = () => {
         </Select>
       </div>
       {loading && gamesResult.length === 0 ? (
-        <div className="w-full columns-3 space-y-5">
+        <div className="w-full columns-3 lg-tab:columns-2 xxs-tab:columns-1 space-y-5">
           {[...Array(6)].map((_, index) => (
             <GameSkeleton key={index} />
           ))}
         </div>
       ) : (
-        <div className="w-full columns-3 space-y-5">
+        <div className="w-full columns-3 lg-tab:columns-2 xxs-tab:columns-1 desktop-large-1700:columns-4 space-y-5">
           {gamesResult.map((game, index) => (
             <GameCard
               key={`${game.id}-${index}`}

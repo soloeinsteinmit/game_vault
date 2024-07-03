@@ -45,7 +45,7 @@ const GameCard = ({
   }, [gameImage]); */
 
   return (
-    <Card className="w-[320px] hover:scale-[1.015] hover:shadow-md  transition-all duration-300 shadow-sm rounded-medium bg-content2  break-inside-avoid">
+    <Card className="max-w-[320px] lg-tab:max-w-[500px] xxs-tab:max-w-full w-full hover:scale-[1.015] hover:shadow-md  transition-all duration-300 shadow-sm rounded-medium bg-content2  break-inside-avoid">
       <div className="relative rounded-ss-medium rounded-se-medium overflow-hidden">
         {/*  {gameImage.map((imageUrl, index) => (
           <img

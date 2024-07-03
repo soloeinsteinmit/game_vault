@@ -6,9 +6,9 @@ function DashboardLayout() {
   return (
     <div className="min-h-screen bg-content1">
       <TopNav />
-      <div className="flex items-start mt-3">
+      <div className="flex items-start mt-3 ">
         <LeftNav />
-        <div className=" max-w-[1000px] w-full mx-auto">
+        <div className=" max-w-[1000px] desktop-large-1700:max-w-fit w-full mx-auto">
           <Outlet />
         </div>
       </div>

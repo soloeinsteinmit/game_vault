@@ -82,13 +82,13 @@ const DevelopersList = () => {
   return (
     <>
       {loading && developersResult.length === 0 ? (
-        <div className="w-full columns-3 space-y-5">
+        <div className="w-full columns-3 sm-tab:columns-2 xs-tab:columns-1 space-y-5">
           {[...Array(6)].map((_, index) => (
             <CardSkeleton key={index} />
           ))}
         </div>
       ) : (
-        <div className="w-full columns-3 space-y-5 my-5 mb-10">
+        <div className="w-full columns-3 sm-tab:columns-2 xs-tab:columns-1 space-y-5 my-5 mb-10">
           {developersResult.map((developers, index) => (
             <GenrePlatormCard
               key={`${developers.id}-${index}`}

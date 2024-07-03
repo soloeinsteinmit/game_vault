@@ -16,7 +16,7 @@ const GenrePlatormCard = ({
   return (
     <Card
       isFooterBlurred
-      className="w-full max-w-[350px] h-[550px] col-span-12 sm:col-span-5 break-inside-avoid genre-platform-card"
+      className="w-full max-w-[350px] sm-tab:max-w-[500px] xs-tab:max-w-full xs-tab:h-[300px] h-[550px] mobile:h-[450px] col-span-12 sm:col-span-5 break-inside-avoid genre-platform-card"
     >
       <CardHeader className="absolute z-10 top-1 flex-col items-start">
         <p className="text-tiny text-white/60 uppercase font-bold">

@@ -16,6 +16,8 @@ module.exports = {
         "playwrite-fr": ['"Playwrite FR Trad"', "cursive"],
       },
       screens: {
+        "desktop-large-1700": { min: "1700px" },
+        "xl-tab": { max: "1275px" },
         "lg-tab": { max: "1124px" },
         "sm-tab": { max: "848px" },
         "sm-scard-tab": { max: "783px" },

@@ -27,16 +27,16 @@ export const ThemeSwitch = (props) => {
           {...getWrapperProps()}
           className={slots.wrapper({
             class: [
-              "w-10 h-10",
+              "w-10 h-10 mobile:h-8 mobile:w-8",
               "flex items-center justify-center",
               "rounded-medium bg-transparent hover:bg-default-100 mr-[-0px]",
             ],
           })}
         >
           {isSelected ? (
-            <PiSunDimFill className="text-large" />
+            <PiSunDimFill className="text-large mobile:text-medium" />
           ) : (
-            <PiMoonFill className="text-large" />
+            <PiMoonFill className="text-large mobile:text-medium" />
           )}
         </div>
       </Component>
