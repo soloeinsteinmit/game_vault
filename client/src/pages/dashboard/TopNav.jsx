@@ -41,10 +41,13 @@ const TopNav = () => {
   return (
     <div className="flex items-center justify-between gap-5 px-5 h-20 sticky bg-content1 top-0 z-50 shadow-medium">
       <div className="flex gap-2 items-center">
-        <p className="font-playwrite-fr text-xs font-extrabold italic">
+        <Link
+          to={"/dashboard"}
+          className="font-playwrite-fr text-xs font-extrabold italic"
+        >
           GameVault{" "}
-        </p>
-        <Chip color="warning" variant="dot">
+        </Link>
+        <Chip color="warning" variant="dot" size="sm">
           v1.0.0🚀
         </Chip>
       </div>

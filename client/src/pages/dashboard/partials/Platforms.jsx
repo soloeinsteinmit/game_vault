@@ -56,7 +56,6 @@ const Platforms = () => {
 
   return (
     <div className="flex w-full flex-col">
-      <p className="text-4xl font-extrabold mb-1">Platforms</p>
       <Tabs
         aria-label="Platform tabs"
         items={platforms}

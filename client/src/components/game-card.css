@@ -29,3 +29,19 @@
   /* top: 94%;
   opacity: 1; */
 }
+
+/* genre platform card */
+.genre-platform-card .gp-image {
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+
+.genre-platform-card:hover .gp-image {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+}

@@ -62,7 +62,6 @@ function Genres() {
   ];
   return (
     <div className="flex w-full flex-col">
-      <p className="text-4xl font-extrabold mb-1">Genres</p>
       <Tabs
         aria-label="Genre tabs"
         items={genres}

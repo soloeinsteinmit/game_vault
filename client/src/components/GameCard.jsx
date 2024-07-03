@@ -11,6 +11,7 @@ import { Chip } from "@nextui-org/chip";
 import { Divider } from "@nextui-org/divider";
 import { Button } from "@nextui-org/button";
 import { IoIosArrowForward } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const GameCard = ({
   gameImage = img,
@@ -30,6 +31,7 @@ const GameCard = ({
   releaseDate = "2013-09-17",
   genres = ["Anime", "Action", "Sci-Fi"],
   rank = 12,
+  to = "/game",
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -42,7 +44,7 @@ const GameCard = ({
   }, [gameImage]); */
 
   return (
-    <Card className="w-[320px] shadow-sm rounded-medium bg-content2  break-inside-avoid">
+    <Card className="w-[320px] hover:scale-[1.015] hover:shadow-md  transition-all duration-300 shadow-sm rounded-medium bg-content2  break-inside-avoid">
       <div className="relative rounded-ss-medium rounded-se-medium overflow-hidden">
         {/*  {gameImage.map((imageUrl, index) => (
           <img
@@ -79,11 +81,14 @@ const GameCard = ({
         </div>
         {/* ================== */}
 
-        <p className="text-xl font-bold">
+        <Link
+          to={to}
+          className="text-xl font-bold hover:text-default-500 transition-all duration-300"
+        >
           {gameName} {getStatus(status)}
-        </p>
+        </Link>
         <Chip variant="flat" radius="sm" size="sm" startContent={<FaPlus />}>
-          {added}
+          {formatNumberWithCommas(added)}
         </Chip>
       </CardBody>
       <CardFooter className="flex flex-col items-center gap-3">
@@ -171,4 +176,8 @@ function formatDate(inputDate) {
   const formattedDate = date.toLocaleDateString("en-US", options);
 
   return formattedDate;
+}
+
+export function formatNumberWithCommas(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
