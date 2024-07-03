@@ -11,6 +11,7 @@ import {
 } from "../../../../server/api/rawg_api_data";
 import ErrorComponent from "../../components/ErrorComponent";
 import { Spinner } from "@nextui-org/spinner";
+import { Button } from "@nextui-org/button";
 
 const DashboardContent = () => {
   const [gamesResult, setGamesResult] = useState([]);
@@ -74,6 +75,19 @@ const DashboardContent = () => {
     };
   }, []);
 
+  const loadMoreGames = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(nextUrl);
+      setData(response.data);
+      setGamesResult((prevGames) => [...prevGames, ...response.data.results]);
+      setNextUrl(response.data.next);
+    } catch (error) {
+      setError(error);
+    }
+    setLoading(false);
+  };
+
   if (error) return <ErrorComponent errorMessage={error.message} />;
 
   return (
@@ -120,13 +134,17 @@ const DashboardContent = () => {
       )}
       <div
         ref={loader}
-        className="flex items-center w-full justify-center pb-20"
+        className="flex flex-col gap-3 items-center w-full justify-center pb-20"
       >
         {loading && <Spinner size="lg" />}
-        {/*  <Button ref={loader} isLoading={loading} onClick={loadMoreGames}>
-          Load more...
-         
-        </Button> */}
+        <Button
+          ref={loader}
+          isLoading={loading}
+          onClick={loadMoreGames}
+          className="hidden mobile:flex"
+        >
+          Load more data
+        </Button>
       </div>
     </div>
   );

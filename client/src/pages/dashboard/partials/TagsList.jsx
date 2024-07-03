@@ -13,6 +13,7 @@ import {
 
 import { Spinner } from "@nextui-org/spinner";
 import { formatNumberWithCommas } from "../../../components/GameCard";
+import { Button } from "@nextui-org/button";
 
 const TagsList = () => {
   const [tagsResult, setTagsResult] = useState([]);
@@ -77,18 +78,31 @@ const TagsList = () => {
     };
   }, []);
 
+  const loadMoreGames = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(nextUrl);
+      setData(response.data);
+      setTagsResult((prevGames) => [...prevGames, ...response.data.results]);
+      setNextUrl(response.data.next);
+    } catch (error) {
+      setError(error);
+    }
+    setLoading(false);
+  };
+
   if (error) return <ErrorComponent errorMessage={error.message} />;
 
   return (
     <>
       {loading && tagsResult.length === 0 ? (
-        <div className="w-full columns-3 sm-tab:columns-2 xs-tab:columns-1 space-y-5">
+        <div className="w-full columns-3 sm-tab:columns-2 xs-tab:columns-1 space-y-5 lg-tab:px-10 xs-tab:px-5">
           {[...Array(6)].map((_, index) => (
             <CardSkeleton key={index} />
           ))}
         </div>
       ) : (
-        <div className="w-full columns-3 sm-tab:columns-2 xs-tab:columns-1 space-y-5 my-5 mb-10">
+        <div className="w-full columns-3 sm-tab:columns-2 xs-tab:columns-1 space-y-5 my-5 mb-10 lg-tab:px-10 xs-tab:px-5">
           {tagsResult.map((tag, index) => (
             <GenrePlatormCard
               key={`${tag.id}-${index}`}
@@ -116,13 +130,17 @@ const TagsList = () => {
       )}
       <div
         ref={loader}
-        className="flex items-center w-full justify-center pb-20"
+        className="flex flex-col gap-3 items-center w-full justify-center pb-20"
       >
         {loading && <Spinner size="lg" />}
-        {/*  <Button ref={loader} isLoading={loading} onClick={loadMoreGames}>
-          Load more...
-         
-        </Button> */}
+        <Button
+          ref={loader}
+          isLoading={loading}
+          onClick={loadMoreGames}
+          className="hidden mobile:flex"
+        >
+          Load more data
+        </Button>
       </div>
     </>
   );
