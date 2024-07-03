@@ -1,7 +1,7 @@
 import "./game-card.css";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import img from "../assets/1.jpg";
 
 import { FaWindows, FaPlaystation, FaXbox, FaPlus } from "react-icons/fa6";
@@ -31,16 +31,39 @@ const GameCard = ({
   genres = ["Anime", "Action", "Sci-Fi"],
   rank = 12,
 }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  /* useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % gameImage.length);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [gameImage]); */
+
   return (
-    <div className="w-[320px]  game-card shadow-sm rounded-medium bg-content2 h-fit break-inside-avoid">
-      <div className=" rounded-ss-medium rounded-se-medium overflow-hidden">
+    <Card className="w-[320px] shadow-sm rounded-medium bg-content2  break-inside-avoid">
+      <div className="relative rounded-ss-medium rounded-se-medium overflow-hidden">
+        {/*  {gameImage.map((imageUrl, index) => (
+          <img
+            // removeWrapper
+            key={index}
+            src={imageUrl}
+            isZoomed
+            radius="none"
+            alt={`Screenshot ${index}`}
+            className={`absolute w-full h-full object-cover transition-opacity ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))} */}
         <Image src={gameImage} isZoomed radius="none" />
       </div>
-      <div className="flex flex-col gap-3 px-4 my-3 pb-8">
+      <CardBody className="flex flex-col gap-3 px-4 ">
         <div className="flex items-center justify-between rounded-small">
           <div className="flex gap-1">
             {platforms.map((platform) => (
-              <>{getPlatformIcon(platform)}</>
+              <div key={platform}>{getPlatformIcon(platform)}</div>
             ))}
           </div>
           {hasMetascore && (
@@ -55,43 +78,48 @@ const GameCard = ({
           )}
         </div>
         {/* ================== */}
+
         <p className="text-xl font-bold">
           {gameName} {getStatus(status)}
         </p>
-        <Chip variant="flat" radius="sm" startContent={<FaPlus />}>
+        <Chip variant="flat" radius="sm" size="sm" startContent={<FaPlus />}>
           {added}
         </Chip>
-      </div>
-      <div className="game-card-footer break-inside-avoid">
-        <div className="flex justify-between items-center">
+      </CardBody>
+      <CardFooter className="flex flex-col items-center gap-3">
+        <div className="flex justify-between  w-full ">
           <span className="text-xs text-default-500">Release date</span>{" "}
           <span className="text-xs text-default-500">
             {formatDate(releaseDate)}
           </span>
         </div>
         <Divider />
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center w-full">
           <span className="text-xs text-default-500">Genre</span>{" "}
           <div className="text-xs text-default-500 flex gap-1">
             {genres.map((genre) => (
-              <Chip size="sm" variant="flat">
+              <Chip key={genre} size="sm" variant="flat">
                 {genre}
               </Chip>
             ))}
           </div>
         </div>
         <Divider />
-        <div className="flex justify-between items-center ">
+        <div className="flex justify-between items-center w-full">
           <span className="text-xs text-default-500">Chart</span>{" "}
           <span className="text-xs text-default-500">
             #{rank} Top {getYearFromDate(releaseDate)}
           </span>
         </div>
-        <Button variant="flat" endContent={<IoIosArrowForward />}>
+        <Button
+          variant="flat"
+          endContent={<IoIosArrowForward />}
+          className="w-full"
+        >
           Show more like this
         </Button>
-      </div>
-    </div>
+      </CardFooter>
+    </Card>
   );
 };
 

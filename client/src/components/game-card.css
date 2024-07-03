@@ -1,33 +1,31 @@
 .game-card {
-  position: relative;
+  /* position: relative; */
 }
 
-.game-card .game-card-footer {
+.game-card-footer {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding-bottom: 20px;
   padding-inline: 16px;
   background-color: hsl(var(--nextui-content2));
+
   padding: 16px;
   width: 100%;
   border-radius: var(--nextui-radius-small);
-  position: absolute;
+  /* position: absolute; */
   z-index: 99;
-  top: 80%;
+  /* top: 80%; */
   opacity: 0;
-  display: hidden;
+  /* display: hidden; */
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
-  -webkit-border-radius: var(--nextui-radius-small);
-  -moz-border-radius: var(--nextui-radius-small);
-  -ms-border-radius: var(--nextui-radius-small);
-  -o-border-radius: var(--nextui-radius-small);
 }
+
 .game-card:hover .game-card-footer {
-  top: 94%;
-  opacity: 1;
+  /* top: 94%;
+  opacity: 1; */
 }
